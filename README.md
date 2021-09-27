@@ -1,4 +1,4 @@
-<img src="assets/zapp-logo.png" style="height:150px;">
+<img src="./assets/zapp-logo.png" style="height:150px;">
 
 # ZAPP
 Een applicatie waarmee thuiszorg-medewerkers efficiënt hun zorgtaken mee kunnen verrichten bij hun cliënten
