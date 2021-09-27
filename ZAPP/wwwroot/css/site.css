@@ -122,8 +122,16 @@ h2 {
     height: 100%;
 }
 
-@media only screen and (max-width: 545px) {
+btn-outline-light:hover {
+    color: var(--blue) !important;
+}
 
+.text-light:hover {
+    color: var(--blue) !important;
+}
+
+
+@media only screen and (max-width: 545px) {
     .test {
         text-align: center !important;
     }
