@@ -1,0 +1,27 @@
+﻿@page
+@model ZAPP.Pages.Employees.DeleteModel
+
+@{
+    ViewData["Title"] = "Verwijderen";
+}
+
+<h1>Verwijderen</h1>
+
+<h3>Weet je zeker dat je deze medewerker wilt verwijderen?</h3>
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Employee.Name)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Employee.Name)
+        </dd>
+    </dl>
+    
+    <form method="post">
+        <input type="hidden" asp-for="Employee.EmployeeID" />
+        <input type="submit" value="Verwijderen" class="btn btn-danger" /> |
+        <a asp-page="./Index">Terug</a>
+    </form>
+</div>

@@ -1,0 +1,36 @@
+﻿@page
+@model ZAPP.Pages.Employees.IndexModel
+
+@{
+    ViewData["Title"] = "Medewerkers";
+}
+
+<h1>Medewerkers</h1>
+
+<p>
+    <a asp-page="Create" class="mt-auto btn btn-md btn-outline-primary">Nieuwe medewerker</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Employee[0].Name)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Employee) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.EmployeeID">Aanpassen</a> |
+                <a asp-page="./Details" asp-route-id="@item.EmployeeID">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.EmployeeID">Verwijderen</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

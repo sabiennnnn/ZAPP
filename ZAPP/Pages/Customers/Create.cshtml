@@ -1,0 +1,48 @@
+﻿@page
+@model ZAPP.Pages.Customers.CreateModel
+
+@{
+    ViewData["Title"] = "Nieuwe klant";
+}
+
+<h1>Nieuwe klant</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Customer.Name" class="control-label"></label>
+                <input asp-for="Customer.Name" class="form-control" />
+                <span asp-validation-for="Customer.Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Customer.Street" class="control-label"></label>
+                <input asp-for="Customer.Street" class="form-control" />
+                <span asp-validation-for="Customer.Street" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Customer.ZipCode" class="control-label"></label>
+                <input asp-for="Customer.ZipCode" class="form-control" />
+                <span asp-validation-for="Customer.ZipCode" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Customer.City" class="control-label"></label>
+                <input asp-for="Customer.City" class="form-control" />
+                <span asp-validation-for="Customer.City" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Maak klant" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Terug</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

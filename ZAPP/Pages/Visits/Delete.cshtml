@@ -1,0 +1,46 @@
+﻿@page
+@model ZAPP.Pages.Visits.DeleteModel
+
+@{
+    ViewData["Title"] = "Verwijderen";
+}
+
+<h1>Verwijderen</h1>
+
+<h3>Weet je zeker dat je dit bezoek wilt verwijderen?</h3>
+<div>
+    <h4>Bezoek</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Visit.VisitDate)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Visit.VisitDate)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Visit.VisitDone)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Visit.VisitDone)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Visit.Employee)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Visit.Employee.Name)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Visit.Customer)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Visit.Customer.Name)
+        </dd>
+    </dl>
+    
+    <form method="post">
+        <input type="hidden" asp-for="Visit.VisitID" />
+        <input type="submit" value="Verwijderen" class="btn btn-danger" /> |
+        <a asp-page="./Index">TerugS</a>
+    </form>
+</div>

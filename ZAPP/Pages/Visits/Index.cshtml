@@ -1,0 +1,55 @@
+﻿@page
+@model ZAPP.Pages.Visits.IndexModel
+
+@{
+    ViewData["Title"] = "Bezoek";
+}
+
+<h1>Bezoek</h1>
+
+<p>
+    <a asp-page="Create" class="mt-auto btn btn-md btn-outline-primary">Nieuw bezoek</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Visit[0].VisitDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Visit[0].VisitDone)
+            </th>
+            <th>
+                Medewerker
+            </th>
+            <th>
+                Klant
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Visit)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.VisitDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.VisitDone)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Employee.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Customer.Name)
+                </td>
+                <td>
+                    <a asp-page="./Edit" asp-route-id="@item.VisitID">Aanpassen</a> |
+                    <a asp-page="./Details" asp-route-id="@item.VisitID">Details</a> |
+                    <a asp-page="./Delete" asp-route-id="@item.VisitID">Verwijderen</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

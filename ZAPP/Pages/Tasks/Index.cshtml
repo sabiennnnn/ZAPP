@@ -1,0 +1,42 @@
+﻿@page
+@model ZAPP.Pages.Tasks.IndexModel
+
+@{
+    ViewData["Title"] = "Taken";
+}
+
+<h1>Taken</h1>
+
+<p>
+    <a asp-page="Create" class="mt-auto btn btn-md btn-outline-primary">Nieuwe taak</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Task[0].Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Task[0].Description)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Task) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.TaskID">Aanpassen</a> |
+                <a asp-page="./Details" asp-route-id="@item.TaskID">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.TaskID">Verwijderen</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

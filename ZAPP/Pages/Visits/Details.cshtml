@@ -1,0 +1,90 @@
+﻿@page "/Details/{id:int?}"
+@model ZAPP.Pages.Visits.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<hr />
+<h3>Bezoek</h3>
+ <div class="container-fluid">
+        <div class="row mx-n4 mt-5">
+            <div class="col-md-4  d-inline-block px-4">
+                <div class="box border rounded p-4">
+                    <p> @Model.Visit.VisitDate</p>
+                 </div>
+            </div>
+            <div class="col-md-4 d-inline-block d-flex flex-column px-4">
+                <div class="box border rounded p-4 d-flex flex-column d-inline-block">
+                    <p>Klant</p>
+                    <h4> @Model.Visit.Customer.Name </h4>
+                    <p>
+                        @Model.Visit.Customer.Street <br>
+                        @Model.Visit.Customer.ZipCode<br>
+                        @Model.Visit.Customer.City
+                    </p>
+                    <button class="mt-auto btn btn-md btn-outline-primary">Button</button>
+                </div>
+            </div>
+                <div class="col-md-4 d-inline-block d-flex flex-column px-4">
+                    <div class="box border rounded p-4 d-flex flex-column d-inline-block">
+                        <p>Medewerker</p>
+                        <h4> @Model.Visit.Employee.Name </h4>
+                        <button class="mt-auto btn btn-md btn-outline-primary">Button</button>
+                    </div>
+                </div>
+            </div>
+        <div class="row mt-5 gx-2">
+            <div class="col-md-12">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>
+                               Taak
+                            </th>
+                            <th>
+                               Additionele informatie
+                            </th>
+                            <th>
+                                Uitgevoerd?
+                            </th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.Visit.Task)
+                        {
+                        <tr>
+                            <td>
+                                @item.Title
+                            </td>
+                            <td>
+                                @item.Description
+                            </td>
+                            <td>
+                                @if (item.Status == true)
+                                {
+                                    <input class="form-check-input" type="checkbox" id="checkboxNoLabel" value="" aria-label="..." checked>
+                                }
+                                else
+                                {
+                                    <input class="form-check-input" type="checkbox" id="checkboxNoLabel" value="" aria-label="..." >
+                                }
+
+                            </td>
+                        </tr>
+                        }
+                        </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="row gx-2 mt-5 mb-5"
+            <div class="col-md-12">
+                    <a class="mt-auto btn btn-md btn-outline-primary mr-2 ml-4" asp-page="./Edit" asp-route-id="@Model.Visit.VisitID">Aanpassen</a>
+                    <a class="mt-auto btn btn-md btn-outline-primary" asp-page="./Index">Terug naar lijst</a>
+            </div>
+        </div>
+    </div>
+

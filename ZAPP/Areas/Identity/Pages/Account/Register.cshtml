@@ -1,0 +1,69 @@
+﻿@page
+@model RegisterModel
+@{
+    ViewData["Title"] = "Registreren";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Registreren</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/css/site.css")" media="screen" />
+    <link rel="icon" href="@Url.Content("~/favicon.svg")" />
+
+    <!-- Font Includes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;700;800;900&display=swap" rel="stylesheet">
+</head>
+
+<body class="login-bg" style="background-color: #007bff; ">
+    <div class="container">
+        <main role="main" class="pb-3">
+            <div class="row mt-4 mb-4">
+                <div class="col-md-4 centre">
+                    <img src="~/img/LogoHeart.svg" style="width:100px;" alt="logo heart zapp" />
+                </div>
+            </div>
+
+            <div class="row justify-content-md-center mt-4">
+                <div class="col-md-4 text-light">
+                    <form asp-route-returnUrl="@Model.ReturnUrl" method="post" id="account">
+                        <h4>Creëer een nieuw account.</h4>
+                        <hr />
+                        <div asp-validation-summary="All" class="text-danger"></div>
+                        <div class="form-group">
+                            <label asp-for="Input.Email"></label>
+                            <input asp-for="Input.Email" class="form-control" />
+                            <span asp-validation-for="Input.Email" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Input.Password"></label>
+                            <input asp-for="Input.Password" class="form-control" />
+                            <span asp-validation-for="Input.Password" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Input.ConfirmPassword"></label>
+                            <input asp-for="Input.ConfirmPassword" class="form-control" />
+                            <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Registreer</button>
+                        <div class="form-group text-light mt-3">
+                            <p class="text-light">
+                                <a id="forgot-password" asp-page="./Login" class="text-light">Ik heb al een account</a>
+                            </p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+</html>
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

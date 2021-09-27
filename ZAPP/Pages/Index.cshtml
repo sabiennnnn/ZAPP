@@ -1,0 +1,112 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home";
+}
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- CSS Includes -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.9.0/main.min.css">
+    <link href='https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css' rel='stylesheet'>
+
+    <!-- Font Includes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;700;800;900&display=swap" rel="stylesheet">
+
+    <style type="text/css">
+        .field-validation-error {
+            color: #ff0000;
+        }
+    </style>
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+
+<body>
+    <div class="container">
+        <div id='calendar'></div>
+    </div>
+
+    <!-- JS includes -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.10.1/umd/popper.min.js" integrity="sha512-8jeQKzUKh/0pqnK24AfqZYxlQ8JdQjl9gGONwGwKbJiEaAPkD3eoIjz3IuX4IrP+dnxkchGUeWdXLazLHin+UQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.min.js" integrity="sha384-skAcpIdS7UcVUC05LJ9Dxay8AXcDYfBJqt1CJ85S/CFujBsIzCIv+l9liuYLaMQ/" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.9.0/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.9.0/locales-all.js"></script>
+
+    <script>
+
+        document.addEventListener('DOMContentLoaded', function () {
+            var calendarEl = document.getElementById('calendar');
+            var calendar = new FullCalendar.Calendar(calendarEl, {
+
+                eventClick: function (info) {
+                    var eventObj = info.event;
+
+                    if (eventObj.url) {
+
+                        window.open(eventObj.url, '_self');
+
+                    } else {
+                        alert('Clicked ' + eventObj.title);
+                    }
+                },
+
+                themeSystem: 'bootstrap',
+                locale: 'nl',
+                initialView: 'dayGridMonth',
+                fixedWeekCount: false,
+                customButtons: {
+                    AfspraakButton: {
+                        text: 'Afspraak toevoegen',
+                        click: function () {
+                            window.location = '/Visits/Create';
+                        }
+                    }
+                },
+                headerToolbar: {
+                    left: 'prev,next today',
+                    center: 'title',
+                    right: 'AfspraakButton'
+                },
+                buttonText: {
+                    today: 'vandaag',
+                    month: 'maand',
+                    week: 'week',
+                    day: 'dag',
+                    list: 'lijst'
+                },
+                aspectRatio: function () {
+                    if ($(window).width() <= 481) {
+                        return 0.5;
+                    } else {
+                        return 1.6;
+                    }
+                }(),
+                events: [
+                    @foreach (var item in Model.Visit) {
+                    @:{
+                            @: id: '@item.VisitID',
+                            @: title: '@item.Customer.Name',
+                            @: start: '@Html.DisplayFor(modelItem => item.VisitDate)',
+                            @: description: '@item.Customer.Street.ToString() @item.Customer.ZipCode.ToString() @item.Customer.City.ToString()',
+                            @: url: '/Details/@item.VisitID'
+                    @:},
+                    }],
+            });
+            calendar.render();
+            
+        });
+
+    </script>
+</body>
+</html>

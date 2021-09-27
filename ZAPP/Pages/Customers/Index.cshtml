@@ -1,0 +1,54 @@
+﻿@page
+@model ZAPP.Pages.Customers.IndexModel
+
+@{
+    ViewData["Title"] = "Klanten";
+}
+
+<h1>Klanten</h1>
+
+<p>
+    <a asp-page="Create" class="mt-auto btn btn-md btn-outline-primary">Nieuwe klant</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Customer[0].Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Customer[0].Street)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Customer[0].ZipCode)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Customer[0].City)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Customer) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Street)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ZipCode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.City)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.CustomerID">Aanpassen</a> |
+                <a asp-page="./Details" asp-route-id="@item.CustomerID">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.CustomerID">Verwijderen</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
