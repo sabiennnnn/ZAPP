@@ -9,7 +9,9 @@ namespace ZAPP.Models
     public class Visit
     {
         public int VisitID { get; set; }
+        [Display(Name = "Selecteer klant")]
         public int CustomerID { get; set; }
+        [Display(Name = "Selecteer medewerker")]
         public int EmployeeID { get; set; }
 
         public int TaskID { get; set; }
