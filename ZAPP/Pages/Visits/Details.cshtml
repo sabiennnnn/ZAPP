@@ -8,12 +8,12 @@
 <h1>Details</h1>
 
 <hr />
-<h3>Bezoek</h3>
+<h3>Bezoek @Model.Visit.Customer.Name: @Model.Visit.VisitDate.ToShortDateString()</h3>
  <div class="container-fluid">
         <div class="row mx-n4 mt-5">
             <div class="col-md-4  d-inline-block px-4">
                 <div class="box border rounded p-4">
-                    <p> @Model.Visit.VisitDate</p>
+                    <p> @Model.Visit.VisitDate.ToShortDateString()</p>
                  </div>
             </div>
             <div class="col-md-4 d-inline-block d-flex flex-column px-4">
