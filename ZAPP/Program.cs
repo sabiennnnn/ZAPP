@@ -7,6 +7,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
+// admin@admin.com
+// Admin123!
+
 namespace ZAPP
 {
     public class Program

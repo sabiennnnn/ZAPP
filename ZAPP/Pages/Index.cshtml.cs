@@ -6,7 +6,7 @@ using ZAPP.Models;
 
 namespace ZAPP.Pages
 {
-    [Authorize]
+    //[Authorize]
     public class IndexModel : PageModel
     {
         private readonly ZAPP.Data.ZAPPContext _context;
