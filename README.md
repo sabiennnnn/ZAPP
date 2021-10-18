@@ -17,7 +17,7 @@ Zowel de web applicatie als de API worden vervaardigd in:
 De mobiele app wordt gemaakt met: 
 - React Native 
 - De data wordt opgehaald via API
-- 
+
 # Methoden en Technieken
 ## Entity Relationship Diagram
 Dit diagram toont het conceptueel datamodel. Het is een visuele weergave van de entiteiten, relaties en regels die gelden of aanwezig zijn. 
